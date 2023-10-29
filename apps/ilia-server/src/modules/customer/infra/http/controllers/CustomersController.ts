@@ -1,12 +1,21 @@
-import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
-import { ICreateCustomerDTO } from 'src/modules/customer/dtos/ICreateCustomerDTO';
-import { CustomersService } from 'src/modules/customer/services/CustomersService';
+import { ICreateCustomerDTO } from '@modules/customer/dtos/ICreateCustomerDTO';
+import { CustomersService } from '@modules/customer/services/CustomersService';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Query,
+  HttpCode,
+} from '@nestjs/common';
 
-@Controller('customers')
+@Controller('/v1/customers')
 export class CustomersController {
   constructor(private readonly customersService: CustomersService) {}
 
   @Post()
+  @HttpCode(201)
   create(@Body() createCustomerDTO: ICreateCustomerDTO) {
     return this.customersService.create(createCustomerDTO);
   }

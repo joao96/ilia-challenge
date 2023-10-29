@@ -1,6 +1,6 @@
 import { OrderStatusType } from '../types';
 
 export class IUpdateOrderDTO {
-  id: string;
+  id?: string;
   status: OrderStatusType;
 }

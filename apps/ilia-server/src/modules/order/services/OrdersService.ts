@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { AppError } from 'src/shared/errors/AppError';
 import { IOrderRepository } from '../repositories/IOrderRepository';
 import { Order } from '../entities/Order';
 import { ICreateOrderDTO } from '../dtos/ICreateOrderDTO';
 import { IUpdateOrderDTO } from '../dtos/IUpdateOrderDTO';
+import { AppError } from '@shared/errors/AppError';
 
 @Injectable()
 export class OrdersService {

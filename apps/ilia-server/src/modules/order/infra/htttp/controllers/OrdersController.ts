@@ -1,3 +1,6 @@
+import { ICreateOrderDTO } from '@modules/order/dtos/ICreateOrderDTO';
+import { IUpdateOrderDTO } from '@modules/order/dtos/IUpdateOrderDTO';
+import { OrdersService } from '@modules/order/services/OrdersService';
 import {
   Controller,
   Get,
@@ -6,16 +9,15 @@ import {
   Param,
   Query,
   Patch,
+  HttpCode,
 } from '@nestjs/common';
-import { ICreateOrderDTO } from 'src/modules/order/dtos/ICreateOrderDTO';
-import { IUpdateOrderDTO } from 'src/modules/order/dtos/IUpdateOrderDTO';
-import { OrdersService } from 'src/modules/order/services/OrdersService';
 
-@Controller('orders')
+@Controller('/v1/orders')
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @Post()
+  @HttpCode(201)
   create(@Body() createOrderDTO: ICreateOrderDTO) {
     return this.ordersService.create(createOrderDTO);
   }

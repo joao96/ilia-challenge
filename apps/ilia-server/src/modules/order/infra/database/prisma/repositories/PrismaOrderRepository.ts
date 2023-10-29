@@ -4,8 +4,8 @@ import { Order } from 'src/modules/order/entities/Order';
 import { IOrderRepository } from 'src/modules/order/repositories/IOrderRepository';
 import { PrismaOrderMapper } from '../mappers/PrismaOrderMapper';
 import { OrderStatus, PaymentMethod } from '@prisma/client';
-import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { IUpdateOrderDTO } from 'src/modules/order/dtos/IUpdateOrderDTO';
+import { PrismaService } from '@shared/prisma/prisma.service';
 
 @Injectable()
 export class PrismaOrderRepository implements IOrderRepository {

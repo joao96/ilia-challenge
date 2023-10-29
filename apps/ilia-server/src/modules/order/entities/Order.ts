@@ -18,4 +18,8 @@ export class Order {
       ...props,
     };
   }
+
+  get status(): string {
+    return this.props.status;
+  }
 }

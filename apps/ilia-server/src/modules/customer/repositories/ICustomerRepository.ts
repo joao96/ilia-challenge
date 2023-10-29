@@ -1,5 +1,5 @@
 import { ICreateCustomerDTO } from '../dtos/ICreateCustomerDTO';
-import { Customer } from '../entities/customer';
+import { Customer } from '../entities/Customer';
 
 export abstract class ICustomerRepository {
   abstract create(customer: ICreateCustomerDTO): Promise<Customer>;

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ICustomerRepository } from '../repositories/ICustomerRepository';
 import { ICreateCustomerDTO } from '../dtos/ICreateCustomerDTO';
 import { Customer } from '../entities/Customer';
-import { AppError } from 'src/shared/errors/AppError';
+import { AppError } from '@shared/errors/AppError';
 
 @Injectable()
 export class CustomersService {

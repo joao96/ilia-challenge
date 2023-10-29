@@ -1,25 +1,16 @@
-import { ICreateCustomerDTO } from '../dtos/ICreateCustomerDTO';
+export interface CustomerProps {
+  id: string;
+  createdAt: Date;
+  name: string;
+  email: string;
+}
 
 export class Customer {
-  private props: ICreateCustomerDTO;
+  private props: CustomerProps;
 
-  constructor(props: ICreateCustomerDTO) {
+  constructor(props: CustomerProps) {
     this.props = {
       ...props,
     };
-  }
-
-  public set name(name: string) {
-    this.props.name = name;
-  }
-  public get name(): string {
-    return this.props.name;
-  }
-
-  public set email(email: string) {
-    this.props.email = email;
-  }
-  public get email(): string {
-    return this.props.email;
   }
 }

@@ -1,4 +1,4 @@
-import { Order } from 'src/modules/order/entities/Order';
+import { Order } from '../../../../entities/Order';
 import { Order as RawOrder } from '@prisma/client';
 
 export class PrismaOrderMapper {
