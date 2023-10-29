@@ -1,7 +1,7 @@
-import { ButtonHTMLAttributes } from "react";
-import cx from "classnames";
+import { ButtonHTMLAttributes } from 'react';
+import cx from 'classnames';
 
-import { DefaultButton } from "./styles";
+import { DefaultButton } from './styles';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   isOutlined?: boolean;
@@ -18,12 +18,12 @@ export const Button = ({
   return (
     <DefaultButton
       className={cx(
-        "button",
+        'button',
         { outlined: isOutlined },
         { cancel: isCancel },
-        { terminate: isTerminate }
+        { terminate: isTerminate },
       )}
       {...rest}
     />
   );
-}
+};

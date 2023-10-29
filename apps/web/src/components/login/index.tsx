@@ -1,5 +1,11 @@
 import { Button } from '../button';
-import { Content, CreateRoomButton, Form, LoginContainer, Separator } from './styles';
+import {
+  Content,
+  CreateRoomButton,
+  Form,
+  LoginContainer,
+  Separator,
+} from './styles';
 
 export const Login = () => {
   return (

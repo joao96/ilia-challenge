@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-
 import {
   MdRemoveCircleOutline,
   MdAddCircleOutline,
@@ -40,12 +38,13 @@ export const Cart = ({ children }) => {
 
   const fakeProduct = {
     id: 1,
-		title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-		price: 109.95,
-		description: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-		category: "men's clothing",
-		image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-  }
+    title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
+    price: 109.95,
+    description:
+      'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
+    category: "men's clothing",
+    image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+  };
 
   const cart = [fakeProduct];
 
@@ -63,7 +62,7 @@ export const Cart = ({ children }) => {
         </thead>
         <tbody>
           {cart.map((product) => (
-            <tr>
+            <tr key={product.id}>
               <td>
                 <img src={product.image} alt={product.title} />
               </td>
@@ -104,4 +103,4 @@ export const Cart = ({ children }) => {
       </footer>
     </Container>
   );
-}
+};

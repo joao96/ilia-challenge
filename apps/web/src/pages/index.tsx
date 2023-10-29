@@ -1,16 +1,18 @@
 import { Login } from '../components/login';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export default function Home() {
   return (
     <HomeContainer>
       <Aside>
         <strong>Welcome to FashionHub</strong>
-        <p>FashionHub is your one-stop online destination for all things fashion</p>
+        <p>
+          FashionHub is your one-stop online destination for all things fashion
+        </p>
       </Aside>
       <Login />
     </HomeContainer>
-  )
+  );
 }
 
 export const HomeContainer = styled.div`
@@ -32,7 +34,9 @@ const Aside = styled.aside`
   padding: 120px 80px;
 
   strong {
-    font: 700 3.6rem 'Poppins', sans-serif;
+    font:
+      700 3.6rem 'Poppins',
+      sans-serif;
     line-height: 4.2rem;
     margin-top: 16px;
   }
@@ -44,7 +48,7 @@ const Aside = styled.aside`
     color: #f8f8f8;
   }
 
-  @media(max-width: 900px) {
+  @media (max-width: 900px) {
     flex: 4;
     padding: 40px 40px;
     strong {
@@ -56,7 +60,7 @@ const Aside = styled.aside`
     }
   }
 
-  @media(max-width: 720px) {
+  @media (max-width: 720px) {
     display: none;
   }
 `;

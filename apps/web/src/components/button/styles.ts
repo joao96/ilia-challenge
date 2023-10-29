@@ -1,11 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const DefaultButton = styled.button`
-
   height: 50px;
   border-radius: 8px;
   font-weight: 500;
-  background: #0054A6;
+  background: #0054a6;
   color: #fff;
   padding: 0 32px;
   display: flex;
@@ -45,5 +44,4 @@ export const DefaultButton = styled.button`
     opacity: 0.6;
     cursor: not-allowed;
   }
-
 `;

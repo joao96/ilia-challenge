@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const LoginContainer = styled.main`
   flex: 8;
@@ -10,7 +10,7 @@ export const LoginContainer = styled.main`
   align-items: center;
   justify-content: center;
 
-  @media(max-width: 900px) {
+  @media (max-width: 900px) {
     flex: 4;
   }
 `;
@@ -46,7 +46,8 @@ export const Content = styled.div`
       margin-top: 16px;
     }
 
-    button, input {
+    button,
+    input {
       width: 100%;
     }
   }
@@ -83,7 +84,7 @@ export const CreateRoomButton = styled.button`
   }
 
   &:hover {
-    filter: brightness(0.9)
+    filter: brightness(0.9);
   }
 `;
 
@@ -102,7 +103,7 @@ export const Separator = styled.div`
     background: #a8a8b3;
     margin-right: 16px;
   }
-  
+
   &::after {
     content: '';
     flex: 1;
@@ -112,11 +113,8 @@ export const Separator = styled.div`
   }
 `;
 
-
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
 `;
-
-

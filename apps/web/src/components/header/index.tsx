@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 import { MdShoppingBasket } from 'react-icons/md';
 
-
 import logo from '../../assets/images/logo.svg';
 import Link from 'next/link';
 import { Cart, Container } from './styles';
@@ -14,9 +13,7 @@ export const Header = () => {
 
   return (
     <Container>
-      <Link href="/">
-        {/* <img src={logo} alt="Rocketshoes" /> */}
-      </Link>
+      <Link href="/">{/* <img src={logo} alt="Rocketshoes" /> */}</Link>
 
       <Cart href="/cart">
         <div>
@@ -27,4 +24,4 @@ export const Header = () => {
       </Cart>
     </Container>
   );
-}
+};

@@ -28,7 +28,7 @@ export const CardContainer = styled.div`
   }
 
   button {
-    background: #0054A6;
+    background: #0054a6;
     color: #fff;
     border: 0;
     border-radius: 4px;
