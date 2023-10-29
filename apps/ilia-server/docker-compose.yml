@@ -1,0 +1,31 @@
+version: '3.9'
+# docker-compose --env-file .docker.env up
+services:
+  postgres:
+    image: postgres:latest
+    container_name: database
+    restart: always
+    ports:
+      - 5432:5432
+    env_file:
+      - .docker.env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?schema=${POSTGRES_SCHEMA}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB}?schema=${POSTGRES_SCHEMA}
+    depends_on:
+      - postgres
+    env_file:
+      - .docker.env
+
+volumes:
+  postgres-data:
