@@ -1,7 +1,8 @@
-import { Login } from '../components/login';
+import { Login } from '../components/Login';
 import styled from 'styled-components';
+import { NextPageWithLayout } from '../shared/types/page';
 
-export default function Home() {
+const Home: NextPageWithLayout = () => {
   return (
     <HomeContainer>
       <Aside>
@@ -13,7 +14,7 @@ export default function Home() {
       <Login />
     </HomeContainer>
   );
-}
+};
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -64,3 +65,9 @@ const Aside = styled.aside`
     display: none;
   }
 `;
+
+Home.getLayout = function getLayout(page) {
+  return <>{page}</>;
+};
+
+export default Home;

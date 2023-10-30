@@ -1,53 +1,52 @@
-import { Header } from '../components/header';
 import { useSelector, useDispatch } from 'react-redux';
-import { getItemsInCart, setItemsInCart } from '../redux/cartSlice';
 import { useEffect } from 'react';
-import { CardList } from '../components/card-list';
 import styled from 'styled-components';
-import { fetchProducts } from '../redux/productsSlice';
+import { setProducts } from '../redux/productsSlice';
+import type { GetStaticProps } from 'next';
+import { Product } from '../shared/types';
+import { AppState } from '../redux/store';
+import { NextPageWithLayout } from '../shared/types/page';
+import Layout from '../components/Layout';
+import { CardList } from '../components/CardList';
 
-export default function Products() {
+interface ProductsProps {
+  productsList: Product[];
+}
+
+export const getStaticProps = (async () => {
+  const res = await fetch('https://fakestoreapi.com/products/');
+  const productsList = await res.json();
+  return { props: { productsList } };
+}) satisfies GetStaticProps<{
+  productsList: ProductsProps;
+}>;
+
+const Products: NextPageWithLayout = ({ productsList }: ProductsProps) => {
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.products);
+  const { data } = useSelector((state: AppState) => state.products);
 
-  // make call in another place
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
-
-  const fakeProduct = {
-    id: 1,
-    title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-    price: 109.95,
-    description:
-      'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
-    category: "men's clothing",
-    image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-  };
-
-  const fakeProduct2 = {
-    id: 2,
-    title: 'Mens Casual Premium Slim Fit T-Shirts ',
-    price: 22.3,
-    description:
-      'Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.',
-    category: "men's clothing",
-    image:
-      'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
-  };
-
-  const products = [fakeProduct, fakeProduct2];
+    if (data.length === 0) {
+      console.log('hi');
+      dispatch(setProducts(productsList));
+    }
+  }, [productsList]);
 
   return (
     <ProductsContainer>
-      <Header />
-      <CardList products={products} />
+      <CardList products={data} />
     </ProductsContainer>
   );
-}
+};
 
 export const ProductsContainer = styled.div`
   max-width: 1020px;
   margin: 0 auto;
   padding: 0 20px 50px;
 `;
+
+Products.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
+
+export default Products;
