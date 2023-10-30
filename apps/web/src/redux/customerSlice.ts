@@ -7,7 +7,7 @@ export interface CustomerState {
 }
 
 const initialState: CustomerState = {
-  data: {},
+  data: { orders: [] },
 };
 
 export const customerSlice = createSlice({
@@ -17,10 +17,16 @@ export const customerSlice = createSlice({
     setCustomer(state, action) {
       state.data = action.payload;
     },
+    setOrders(state, action) {
+      state.data.orders.push(action.payload);
+    },
+    emptyCustomer(state) {
+      state.data = { orders: [] };
+    },
   },
 });
 
-export const { setCustomer } = customerSlice.actions;
+export const { setCustomer, setOrders, emptyCustomer } = customerSlice.actions;
 export const getCustomer = (state: AppState) => state.customer.data;
 
 export default customerSlice.reducer;
