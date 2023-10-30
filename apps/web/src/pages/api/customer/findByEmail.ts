@@ -1,0 +1,17 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+import api from '../api';
+
+// fix this
+export default async function (req: NextApiRequest, res: NextApiResponse) {
+  try {
+    const response = await api.get('/v1/customers', { params: req.query });
+    const data = response.data;
+    res.status(200).json(data);
+  } catch (error) {
+    if (error.response) {
+      const status = error.response.status;
+      const errorMessage = error.response.data.message;
+      res.status(status).json({ error: errorMessage });
+    }
+  }
+}
