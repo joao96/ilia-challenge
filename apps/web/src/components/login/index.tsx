@@ -1,7 +1,7 @@
-import { Button } from '../button';
+import { Button } from '../Button';
 import {
   Content,
-  CreateRoomButton,
+  EnterButton,
   Form,
   LoginContainer,
   Separator,
@@ -19,9 +19,9 @@ export const Login = () => {
             onChange={() => {}}
             value={''}
           />
-          <CreateRoomButton onClick={() => {}} className="create-room">
+          <EnterButton onClick={() => {}} className="create-room">
             Enter Shop
-          </CreateRoomButton>
+          </EnterButton>
         </Form>
         <Separator>New customer?</Separator>
         <Form onSubmit={() => {}}>

@@ -63,11 +63,11 @@ export const Content = styled.div`
   }
 `;
 
-export const CreateRoomButton = styled.button`
+export const EnterButton = styled.button`
   height: 50px;
   border-radius: 8px;
   font-weight: 500;
-  background: #ea4335;
+  background: ${({ theme }) => theme.button.secondary};
   color: #fff;
   display: flex;
   justify-content: center;
