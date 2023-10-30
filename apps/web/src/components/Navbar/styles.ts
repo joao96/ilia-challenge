@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export const Container = styled.header`
+export const Container = styled.header<{ display?: boolean }>`
   height: 100px;
   display: flex;
   align-items: center;
@@ -11,22 +11,27 @@ export const Container = styled.header`
   position: sticky;
   top: 0;
 
-  > svg {
-    position: fixed;
-    color: white;
-    width: 30px;
-    height: 30px;
-    margin-top: 32px;
-    margin-left: 32px;
-    cursor: pointer;
+  @media (max-width: 768px) {
+    height: ${(props) => (props.display ? '200px' : '60px')};
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<{ display?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 50%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  @media (max-width: 768px) {
+    display: ${(props) => (props.display ? 'flex' : 'none')};
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 `;
 
 export const Cart = styled(Link)`
@@ -61,5 +66,22 @@ export const Welcome = styled.div`
   color: ${({ theme }) => theme.text.secondary};
   @media (min-width: 768px) {
     margin: 0px 10px;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+export const NavBarToggle = styled.span<{ display?: boolean }>`
+  position: absolute;
+  top: ${(props) => (props.display ? '10px' : '')};
+  right: 20px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+
+  div {
+    @media (min-width: 768px) {
+      display: none;
+    }
   }
 `;

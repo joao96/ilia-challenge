@@ -29,6 +29,11 @@ export const OrdersContainer = styled.div`
   max-width: 1020px;
   margin: 0 auto;
   padding: 0 20px 50px;
+
+  @media (max-width: 768px) {
+    padding: 0px;
+    margin: 10px;
+  }
 `;
 
 Orders.getLayout = function getLayout(page) {

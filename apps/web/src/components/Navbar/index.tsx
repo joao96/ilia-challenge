@@ -1,16 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Cart, Container, Content, Welcome } from './styles';
+import { Cart, Container, Content, NavBarToggle, Welcome } from './styles';
 import NavbarItem from './components/NavbarItem';
 import { MdShoppingBasket } from 'react-icons/md';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import { AppState } from '../../redux/store';
 import { emptyCart } from '../../redux/cartSlice';
 import { emptyCustomer } from '../../redux/customerSlice';
+import { useState } from 'react';
 
 export const Navbar = () => {
   const dispatch = useDispatch();
   const { data } = useSelector((state: AppState) => state.customer);
   const { itemsInCart } = useSelector((state: AppState) => state.cart);
+  const [displayMobile, setDisplayMobile] = useState(false);
 
   function shouldWelcome() {
     if (data.name) {
@@ -27,9 +30,18 @@ export const Navbar = () => {
     dispatch(emptyCustomer());
   }
 
+  function toggleNavBar() {
+    setDisplayMobile(!displayMobile);
+  }
+
   return (
-    <Container>
-      <Content>
+    <Container display={displayMobile}>
+      <NavBarToggle display={displayMobile} onClick={toggleNavBar}>
+        <div>
+          <GiHamburgerMenu />
+        </div>
+      </NavBarToggle>
+      <Content display={displayMobile}>
         {shouldWelcome()}
         <NavbarItem href={'/products'} text={'Products'} />
         <NavbarItem href={'/orders'} text={'My Orders'} />

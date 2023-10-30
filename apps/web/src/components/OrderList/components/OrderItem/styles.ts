@@ -6,6 +6,12 @@ export const OrderItemContainer = styled.div`
   background: #fff;
   border-radius: 4px;
 
+  @media (max-width: 768px) {
+    font-size: 12px;
+    margin-top: 30px;
+    padding: 10px;
+  }
+
   footer {
     margin-top: 30px;
     display: flex;
@@ -32,19 +38,37 @@ export const OrderItemContainer = styled.div`
 export const OrderTable = styled.table`
   width: 100%;
 
+  thead {
+    th:nth-child(1) {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
   thead th {
     color: #999;
     text-align: left;
     padding: 12px;
+    @media (max-width: 768px) {
+      padding: 0px;
+    }
+  }
+
+  tbody {
+    td:nth-child(1) {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
   }
 
   tbody td {
     padding: 12px;
     border-bottom: 1px solid #eee;
-  }
-
-  img {
-    height: 100px;
+    @media (max-width: 768px) {
+      padding: 0px;
+    }
   }
 
   strong {
@@ -57,6 +81,9 @@ export const OrderTable = styled.table`
     margin-top: 5px;
     font-size: 18px;
     font-weight: bold;
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   div {
@@ -91,5 +118,9 @@ export const Total = styled.div`
   strong {
     font-size: 28px;
     margin-left: 5px;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
   }
 `;

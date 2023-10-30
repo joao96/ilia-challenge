@@ -53,8 +53,8 @@ export const CartList = ({
         <thead>
           <tr>
             <th />
-            <th>PRODUTO</th>
-            <th>QTD</th>
+            <th>PRODUCT</th>
+            <th>QUANTITY</th>
             <th>SUBTOTAL</th>
             <th />
           </tr>

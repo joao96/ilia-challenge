@@ -11,7 +11,6 @@ export const NavLink = styled(Link)`
   @media (min-width: 768px) {
     margin: 0px 10px;
   }
-
   text-decoration: none;
   transition: opacity 0.2s;
 

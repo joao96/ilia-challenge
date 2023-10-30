@@ -79,6 +79,11 @@ export const CartContainer = styled.div`
   max-width: 1020px;
   margin: 0px auto;
   padding: 0 20px 50px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+    margin: 0;
+  }
 `;
 
 Cart.getLayout = function getLayout(page) {
