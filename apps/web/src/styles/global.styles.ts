@@ -19,12 +19,6 @@ body, input, button {
   font: 14px Roboto, sans-serif;
 }
 
-// #__next {
-//   max-width: 1020px;
-//   margin: 0 auto;
-//   padding: 0 20px 50px;
-// }
-
 button {
   cursor: pointer;
 }

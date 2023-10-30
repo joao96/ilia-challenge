@@ -6,7 +6,8 @@ export interface Product {
   description: string;
   category: string;
   rating?: {
-    rate?: 3.9;
-    count?: 120;
+    rate?: number;
+    count?: number;
   };
+  quantity: number;
 }

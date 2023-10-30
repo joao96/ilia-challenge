@@ -1,10 +1,18 @@
 import React from 'react';
 import { Container, NavLink } from './styles';
 
-const NavbarItem = ({ href, Text }) => {
+interface NavbarItemProps {
+  href: string;
+  text: string;
+  click?: () => void;
+}
+
+const NavbarItem = ({ href, text, click }: NavbarItemProps) => {
   return (
     <Container>
-      <NavLink href={href}>{Text}</NavLink>
+      <NavLink onClick={click} href={href}>
+        {text}
+      </NavLink>
     </Container>
   );
 };

@@ -1,8 +1,22 @@
-import { Login } from '../components/Login';
+import { Login } from '../containers/Login';
 import styled from 'styled-components';
 import { NextPageWithLayout } from '../shared/types/page';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { AppState } from '../redux/store';
+import { useRouter } from 'next/router';
 
 const Home: NextPageWithLayout = () => {
+  const { push } = useRouter();
+  const { data } = useSelector((state: AppState) => state.customer);
+
+  useEffect(() => {
+    const { email } = data;
+    if (email) {
+      push('/products');
+    }
+  }, []);
+
   return (
     <HomeContainer>
       <Aside>

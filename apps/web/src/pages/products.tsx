@@ -8,6 +8,7 @@ import { AppState } from '../redux/store';
 import { NextPageWithLayout } from '../shared/types/page';
 import Layout from '../components/Layout';
 import { CardList } from '../components/CardList';
+import { useRouter } from 'next/router';
 
 interface ProductsProps {
   productsList: Product[];
@@ -23,14 +24,22 @@ export const getStaticProps = (async () => {
 
 const Products: NextPageWithLayout = ({ productsList }: ProductsProps) => {
   const dispatch = useDispatch();
+  const { push } = useRouter();
   const { data } = useSelector((state: AppState) => state.products);
+  const { data: customer } = useSelector((state: AppState) => state.customer);
 
   useEffect(() => {
     if (data.length === 0) {
-      console.log('hi');
       dispatch(setProducts(productsList));
     }
   }, [productsList]);
+
+  useEffect(() => {
+    const { email } = customer;
+    if (!email) {
+      push('/');
+    }
+  }, []);
 
   return (
     <ProductsContainer>

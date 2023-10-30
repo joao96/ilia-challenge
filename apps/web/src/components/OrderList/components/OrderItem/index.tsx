@@ -11,10 +11,6 @@ export const OrderItem = (props: OrderItemProps) => {
   const { createdAt, items, paymentMethod, shippingAddress, status, value } =
     order.props;
 
-  if (items.length === 0) {
-    // change this to indicate an empty list
-    return <></>;
-  }
   const productNames = items.join(', ');
   return (
     <OrderItemContainer>
