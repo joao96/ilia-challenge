@@ -124,7 +124,7 @@ $ npm run dev
 ```
 
 That's it! 
-Now you should be able to access the webpage through http://localhost:3001/ and test it out.
+Now you should be able to access the webpage through http://localhost:3000/ and test it out.
 
 
 ## :test_tube: Frontend Testing
