@@ -125,3 +125,11 @@ export const ToggleButton = styled.button`
   font: inherit;
   padding: 0;
 `;
+
+export const Input = styled.input<{ error?: boolean }>`
+  border: ${(props) => (props.error ? '3px solid #EA4335' : '')} !important;
+`;
+
+export const ErrorMessage = styled.div`
+  color: ${({ theme }) => theme.button.secondary};
+`;
