@@ -18,7 +18,7 @@ export const Navbar = () => {
     if (isClient) {
       return (
         <Welcome>
-          <strong>Hi {data.name ? `, ${data.name}!` : '!'}</strong>
+          <strong>Hi{data.name ? `, ${data.name}!` : '!'}</strong>
         </Welcome>
       );
     }
@@ -55,7 +55,7 @@ export const Navbar = () => {
           </div>
           <MdShoppingBasket size={36} color="#FFF" />
         </Cart>
-        <NavbarItem click={handleLogout} href={'/'} text={'Logout'} />
+        <NavbarItem outline click={handleLogout} href={'/'} text={'Logout'} />
       </Content>
     </Container>
   );

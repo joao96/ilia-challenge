@@ -5,12 +5,18 @@ interface NavbarItemProps {
   href: string;
   text: string;
   click?: () => void;
+  outline?: boolean;
 }
 
-const NavbarItem = ({ href, text, click }: NavbarItemProps) => {
+const NavbarItem = ({
+  href,
+  text,
+  click,
+  outline = false,
+}: NavbarItemProps) => {
   return (
     <Container>
-      <NavLink onClick={click} href={href}>
+      <NavLink outline={outline} onClick={click} href={href}>
         {text}
       </NavLink>
     </Container>

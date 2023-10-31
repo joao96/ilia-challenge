@@ -48,8 +48,9 @@ const Cart: NextPageWithLayout = () => {
         dispatch(emptyCart());
         dispatch(setOrders(response));
         toast.success(`Order created succesfully!`);
+        push('/orders');
       } else {
-        toast.error(`Something went wrong while creating your order`);
+        toast.error(`Something went wrong while creating your order.`);
       }
     }
   }

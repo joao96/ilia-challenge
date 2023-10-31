@@ -12,13 +12,13 @@ export function MyToaster() {
         success: {
           icon: '🎉',
           style: {
-            border: '1px solid #4BB543',
+            border: '2px solid #4BB543',
           },
         },
         error: {
           icon: '❌',
           style: {
-            border: '1px solid #EA001E',
+            border: '2px solid #EA001E',
           },
         },
       }}
