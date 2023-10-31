@@ -1,0 +1,285 @@
+openapi: "3.0.3"
+info:
+  title: Customer and Orders API
+  version: "1.0"
+components:
+  schemas:
+    Message:
+      type: object
+      properties:
+        statusCode:
+          type: number
+        message:
+          type: string
+    Customer:
+      type: object
+      properties:
+        prop:
+          type: object
+          properties:
+            email:
+              type: string
+            name:
+              type: string
+    Order:
+      type: object
+      properties:
+        prop:
+          type: object
+          properties:
+            id:
+              type: string
+            createdAt:
+              type: string
+              format: date
+            value:
+              type: number
+            items:
+              type: array
+              example: ["shirt", "leather pants", "shoe"]
+            shippingAddress:
+              type: string
+            paymentMethod: 
+              type: string
+              enum: 
+                - credit_card
+                - cash
+                - other
+            status: 
+              type: string
+              enum: 
+                - pending
+                - shipped
+                - delivered
+                - canceled
+            email:
+              type: string
+    ICreateCustomerDTO:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+    ICreateOrderDTO:
+      type: object
+      properties:
+        value:
+          type: number
+        items:
+          type: array
+          example: ["shirt", "leather pants", "shoe"]
+        shippingAddress:
+          type: string
+        paymentMethod: 
+          type: string
+          enum: 
+            - credit_card
+            - cash
+            - other
+        status: 
+          type: string
+          enum: 
+            - pending
+            - shipped
+            - delivered
+            - canceled
+        email:
+          type: string
+    IUpdateOrderDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        status: 
+          type: string
+          enum: 
+            - pending
+            - shipped
+            - delivered
+            - canceled
+paths:
+  /v1/customers:
+    post:
+      summary: "Create a Customer"
+      description: "Register a customer"
+      tags: 
+        - Customers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ICreateCustomerDTO"
+      responses:
+        "201":
+          description: |
+            Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+        "400":
+          description: |
+            Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"
+              examples:
+                Customer already exists!:
+                  value:
+                    statusCode: 400
+                    message: 'Customer already exists!'
+        "500":
+          description: Internal Server Error
+    get:
+      summary: "Retrieve a Customer by Email"
+      description: "Find a customer by email"
+      tags: 
+        - Customers
+      parameters:
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+        "500":
+          description: Internal Server Error
+  /v1/customers/all:
+    get:
+      summary: "Retrieve all Customers"
+      description: "Get all customers in the application"
+      tags: 
+        - Customers
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+  /v1/customers/{id}:
+    get:
+      summary: "Retrieve a Customer by Id"
+      description: "Get a customer using the id field"
+      tags: 
+        - Customers
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+
+  /v1/orders:
+    post:
+      summary: "Create a new Order"
+      tags: 
+        - Orders
+      requestBody:
+        tags: 
+          - Orders
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ICreateOrderDTO'
+      responses:
+        "201":
+          description: |
+            Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        '500':
+          description: Internal Server Error
+    get:
+      summary: "Get all Customer's Orders"
+      description: "Find all Customer's Orders by Email"
+      tags: 
+        - Orders
+      parameters:
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+  /v1/orders/all:
+    get:
+      summary: "Retrieve all Orders"
+      description: "Find all Orders"
+      tags: 
+        - Orders
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+  /v1/orders/{id}:
+    get:
+      summary: "Retrieve an Order by Id"
+      description: "Find an Order by Id"
+      tags: 
+        - Orders
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Internal Server Error
+    patch:
+      summary: "Update an Order status"
+      description: "Change the status of an Order"
+      tags: 
+        - Orders
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an order
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IUpdateOrderDTO'
+      responses:
+        '200':
+          description: Order updated successfully
+        "400":
+          description: |
+            Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"
+              examples:
+                Order not found.:
+                  value:
+                    statusCode: 400
+                    message: 'Order not found.'
+        '500':
+          description: Internal Server Error
+
+tags:
+  - name: Customers
+    description: API operations related to customers
+  - name: Orders
+    description: API operations related to Orders
