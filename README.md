@@ -55,7 +55,7 @@ This project is divided between two different applications, one for the backend 
 
 ## :information_source: Backend Setup with Docker
 
-In order to run this application with Docker, it's required that you have [Git], [Docker] and [Node.js v20.x][nodejs] or higher on your computer. 
+In order to run this application with Docker, it's required that you have [Git], [Docker] and [Node.js v21.x][nodejs] or higher on your computer. 
 
 From your command line:
 
@@ -71,6 +71,12 @@ First, inside the project root:
 $ cd apps/ilia-server
 ```
 
+Install the dependecies:
+
+```bash
+$ npm install
+```
+
 Then, run the command that will create a Docker Image of the project and start the container:
 
 ```bash
@@ -79,7 +85,7 @@ $ docker-compose up -d
 
 **Step 3:** 
 
-Once you get the container running, open the project folder on a different terminal window and execute the following command in order to apply the necessary migrations:
+Once you get the container running, open the same directory (apps/ilia-server) on a different terminal window and execute the following command in order to apply the necessary migrations:
 
 ```bash
 $ npx prisma migrate dev
