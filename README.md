@@ -46,7 +46,7 @@ For the frontend:
 This application is basically a simple shopping system. The Customer must provide an e-mail and name in order to login into the application. Once there, they can add products to the cart and purchase them.
 If the purchase is successful, an Order will be created and added to the Customer. They can access their previous orders as well.
 
-The products were fetch from an public API called [FakeStoreAPI](https://fakestoreapi.com/).
+The products were fetched from a public API called [FakeStoreAPI](https://fakestoreapi.com/).
 
 The Customer and Order domains are sent to a [Postgres](https://hub.docker.com/_/postgres) database.
 
