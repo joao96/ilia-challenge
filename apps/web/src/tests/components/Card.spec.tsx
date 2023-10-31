@@ -1,7 +1,7 @@
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 import userEvent from '@testing-library/user-event';
-import { screen } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import { Product } from '../../shared/types';
 import { Card } from '../../components/Card';
 import { renderWithProviders } from '../../tests/store';
@@ -24,6 +24,8 @@ const theme: DefaultTheme = {
 
 describe('Card Component', () => {
   let mockProduct: Product;
+  const addToCart = jest.fn();
+  const amountInCart = jest.fn(() => 0);
 
   beforeAll(() => {
     mockProduct = {
@@ -40,7 +42,11 @@ describe('Card Component', () => {
   it('should render a Card', () => {
     const { getByText } = renderWithProviders(
       <ThemeProvider theme={theme}>
-        <Card product={mockProduct} />
+        <Card
+          product={mockProduct}
+          addToCart={addToCart}
+          amountInCart={amountInCart}
+        />
       </ThemeProvider>,
     );
 
@@ -56,15 +62,18 @@ describe('Card Component', () => {
   it('should call handleAddToCart', async () => {
     const { getByRole } = renderWithProviders(
       <ThemeProvider theme={theme}>
-        <Card product={mockProduct} />
+        <Card
+          product={mockProduct}
+          addToCart={addToCart}
+          amountInCart={amountInCart}
+        />
       </ThemeProvider>,
     );
-
     const addToCartButton = getByRole('button', { name: /ADD TO CART/i });
-    expect(await screen.findByText(/In Stock: 1/i)).toBeInTheDocument();
-
     userEvent.click(addToCartButton);
 
-    expect(await screen.findByText(/In Stock: 0/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(addToCart).toHaveBeenCalled();
+    });
   });
 });

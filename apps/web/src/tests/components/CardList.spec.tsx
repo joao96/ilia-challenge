@@ -1,7 +1,7 @@
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import { Product } from '../../shared/types';
-import { CardList } from '../../components/CardList';
 import { renderWithProviders } from '../../tests/store';
+import { CardList } from '../../containers/CardList';
 
 const theme: DefaultTheme = {
   text: {

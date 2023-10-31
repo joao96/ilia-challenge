@@ -11,7 +11,7 @@ export const OrderList = (props: OrderList) => {
   const { orders } = props;
 
   return (
-    <ListContainer>
+    <ListContainer data-testid="order-list-component">
       {orders.length ? (
         <>
           {orders.map((order) => (
