@@ -71,7 +71,7 @@ export const Welcome = styled.div`
     display: none;
   }
 `;
-export const NavBarToggle = styled.span<{ display?: boolean }>`
+export const NavBarToggle = styled.div<{ display?: boolean }>`
   position: absolute;
   top: ${(props) => (props.display ? '10px' : '')};
   right: 20px;

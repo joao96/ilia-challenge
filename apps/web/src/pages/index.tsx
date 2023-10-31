@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { NextPageWithLayout } from '../shared/types/page';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from '../redux/store';
 import { useRouter } from 'next/router';
+import { getCustomer } from '../redux/customerSlice';
 
 const Home: NextPageWithLayout = () => {
   const { push } = useRouter();
-  const { data } = useSelector((state: AppState) => state.customer);
+  const data = useSelector(getCustomer);
 
   useEffect(() => {
     const { email } = data;

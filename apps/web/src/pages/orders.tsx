@@ -5,23 +5,29 @@ import Layout from '../components/Layout';
 import { OrderList } from '../components/OrderList';
 import { AppState } from '../redux/store';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Orders: NextPageWithLayout = () => {
   const { push } = useRouter();
   const { data } = useSelector((state: AppState) => state.customer);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     const { email } = data;
     if (!email) {
       push('/');
     }
+    setIsClient(true);
   }, []);
 
   return (
-    <OrdersContainer>
-      <OrderList orders={data.orders ?? []} />
-    </OrdersContainer>
+    <>
+      {isClient && (
+        <OrdersContainer>
+          <OrderList orders={data.orders ?? []} />
+        </OrdersContainer>
+      )}
+    </>
   );
 };
 

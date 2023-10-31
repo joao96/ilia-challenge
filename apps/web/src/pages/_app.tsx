@@ -2,7 +2,6 @@ import { wrapper } from '../redux/store';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 import GlobalStyle from '../styles/global.styles';
 import { AppPropsWithLayout } from '../shared/types/page';
-
 const theme: DefaultTheme = {
   text: {
     primary: '#333333',
@@ -30,5 +29,4 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
     </>
   );
 }
-
 export default wrapper.withRedux(App);

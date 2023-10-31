@@ -5,19 +5,20 @@ import { MdShoppingBasket } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { emptyCart, getItemsInCart } from '../../redux/cartSlice';
 import { emptyCustomer, getCustomer } from '../../redux/customerSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Navbar = () => {
   const dispatch = useDispatch();
   const data = useSelector(getCustomer);
   const itemsInCart = useSelector(getItemsInCart);
   const [displayMobile, setDisplayMobile] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   function shouldWelcome() {
-    if (data.name) {
+    if (isClient) {
       return (
         <Welcome>
-          <strong>Hi, {data.name}!</strong>
+          <strong>Hi {data.name ? `, ${data.name}!` : '!'}</strong>
         </Welcome>
       );
     }
@@ -31,6 +32,10 @@ export const Navbar = () => {
   function toggleNavBar() {
     setDisplayMobile(!displayMobile);
   }
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <Container display={displayMobile}>

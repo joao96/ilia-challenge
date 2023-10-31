@@ -6,13 +6,13 @@ export interface CustomerState {
   data: { name?: string; email?: string; orders?: Order[] };
 }
 
-const initialState: CustomerState = {
+export const initialCustomerState: CustomerState = {
   data: { orders: [] },
 };
 
 export const customerSlice = createSlice({
   name: 'customer',
-  initialState,
+  initialState: initialCustomerState,
   reducers: {
     setCustomer(state, action) {
       state.data = action.payload;

@@ -11,15 +11,11 @@ export const OrderList = (props: OrderList) => {
   const { orders } = props;
 
   return (
-    <ListContainer data-testid="order-list-component">
+    <ListContainer>
       {orders.length ? (
         <>
           {orders.map((order) => (
-            <OrderItem
-              data-testid="order-component"
-              key={order.props.id}
-              order={order}
-            />
+            <OrderItem key={order.props.id} order={order} />
           ))}
         </>
       ) : (
