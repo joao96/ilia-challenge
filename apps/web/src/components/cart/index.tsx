@@ -16,7 +16,6 @@ interface CartListProps {
   purchase: () => void;
 }
 
-// TODO: make it reusable
 export const CartList = ({
   cart,
   add,
@@ -27,14 +26,18 @@ export const CartList = ({
   const [groupedProducts, setGroupedProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    const aux: Product[] = [];
-    cart.forEach((product) => {
-      const index = aux.findIndex((p) => p.id === product.id);
-      if (index < 0) {
-        aux.push(product);
+    const uniqueProductIds = new Set();
+
+    const uniqueProducts = cart.filter((product) => {
+      if (!uniqueProductIds.has(product.id)) {
+        uniqueProductIds.add(product.id);
+        return true;
       }
+      return false;
     });
-    setGroupedProducts([...aux]);
+    uniqueProducts.sort((a, b) => a.price - b.price);
+
+    setGroupedProducts(uniqueProducts);
   }, [cart]);
 
   function getAmountInCart(id: number) {

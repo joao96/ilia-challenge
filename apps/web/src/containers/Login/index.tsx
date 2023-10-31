@@ -12,6 +12,7 @@ import { setCustomer } from '../../redux/customerSlice';
 import { useRouter } from 'next/router';
 import { handleLogin, handleRegister } from './utils/handlers';
 import { useTheme } from 'styled-components';
+import toast from 'react-hot-toast';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -27,8 +28,11 @@ export const Login = () => {
     const customer = await handleLogin(email);
     if (customer) {
       const { email: customerEmail, name, orders } = customer;
+      toast.success(`Hello ${name}! Welcome to the shop.`);
       dispatch(setCustomer({ name, email: customerEmail, orders }));
       push('/products');
+    } else {
+      toast.error(`Could not find your credentials, try again.`);
     }
   }
 

@@ -20,7 +20,7 @@ export const productsSlice = createSlice({
       if (action.payload) {
         const withQuantity = action.payload.map((product) => ({
           ...product,
-          quantity: Math.floor(Math.random() * 7) + 1,
+          quantity: Math.floor(Math.random() * 10) + 1,
         }));
         state.data = withQuantity;
       }

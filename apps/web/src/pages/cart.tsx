@@ -15,6 +15,7 @@ import { orderCreate } from '../services/Order';
 import { setOrders } from '../redux/customerSlice';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
 
 const Cart: NextPageWithLayout = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const Cart: NextPageWithLayout = () => {
     if (amountInCart < product.quantity) {
       dispatch(addToCart(product));
     } else {
-      // toastify
+      toast.error(`Product out of stock.`);
     }
   }
 
@@ -46,7 +47,9 @@ const Cart: NextPageWithLayout = () => {
       if (response.props.id) {
         dispatch(emptyCart());
         dispatch(setOrders(response));
-        // toastify
+        toast.success(`Order created succesfully!`);
+      } else {
+        toast.error(`Something went wrong while creating your order`);
       }
     }
   }

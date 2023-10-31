@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { addToCart, getItemsInCart } from '../../redux/cartSlice';
 import { Card } from '../../components/Card';
 import { CardListContainer } from './styles';
+import toast from 'react-hot-toast';
 
 interface CardList {
   products: Product[];
@@ -16,7 +17,7 @@ export const CardList = (props: CardList) => {
     if (quantity < product.quantity) {
       dispatch(addToCart(product));
     } else {
-      // toastify
+      toast.error(`Product out of stock.`);
     }
   }
 

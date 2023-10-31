@@ -2,6 +2,7 @@ import { wrapper } from '../redux/store';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 import GlobalStyle from '../styles/global.styles';
 import { AppPropsWithLayout } from '../shared/types/page';
+import { MyToaster } from '../components/Toaster';
 const theme: DefaultTheme = {
   text: {
     primary: '#333333',
@@ -25,6 +26,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
       <ThemeProvider theme={theme}>
         {getLayout(<Component {...pageProps} />)}
         <GlobalStyle />
+        <MyToaster />
       </ThemeProvider>
     </>
   );
