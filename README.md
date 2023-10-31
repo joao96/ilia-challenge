@@ -8,6 +8,7 @@
 
 <p align="center">
   <a href="#checkered_flag-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-structure">Structure</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-backend-setup-with-docker">Backend Setup with Docker</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-backend-setup-without-docker">Backend Setup without Docker</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#test_tube-backend-testing">Backend Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -33,12 +34,24 @@ For the frontend:
 - [Typescript](https://www.typescriptlang.org/)
 - [NextJS](https://nextjs.org/)
 - [Jest](https://jestjs.io/)
+- [FakeStoreAPI](https://fakestoreapi.com/)
 - [Reduxjs/toolkit](https://redux-toolkit.js.org/)
 - [styled-components](https://styled-components.com/)
 - [Yup](https://github.com/jquense/yup)
 
 
 - [VS Code][vc] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
+
+## :information_source: Structure
+This application is basically a simple shopping system. The Customer must provide an e-mail and name in order to login into the application. Once there, they can add products to the cart and purchase them.
+If the purchase is successful, an Order will be created and added to the Customer. They can access their previous orders as well.
+
+The products were fetch from an public API called [FakeStoreAPI](https://fakestoreapi.com/).
+
+The Customer and Order domains are sent to a [Postgres](https://hub.docker.com/_/postgres) database.
+
+This project is divided between two different applications, one for the backend server called _ilia-server_ and a second one for the frotend, called _web_.
+
 
 ## :information_source: Backend Setup with Docker
 
