@@ -61,7 +61,7 @@ $ cd apps/ilia-server
 Then, run the command that will create a Docker Image of the project and start the container:
 
 ```bash
-$ docker-compose up
+$ docker-compose up -d
 ```
 
 **Step 3:** 
@@ -73,7 +73,7 @@ $ npx prisma migrate dev
 ```
 
 That's it! 
-Now you should be able to access the Swagger page through http://localhost:3000/api and test it out.
+Now you should be able to access the Swagger page through http://localhost:3001/api and test it out.
 
 ## :information_source: Backend Setup without Docker
 
@@ -81,7 +81,13 @@ It is also possible to run the application without using the container created p
 
 From your command line:
 
-**Step 1:** 
+**Step 1: Install dependencies** 
+
+```bash
+$ npm install
+```
+
+**Step 2: Run the code** 
 
 ```bash
 $ npm run start:dev
@@ -103,6 +109,12 @@ First, inside the project root:
 
 ```bash
 $ cd apps/web
+```
+
+Install dependencies:
+
+```bash
+$ npm install
 ```
 
 Then, just execute next with the following command:
