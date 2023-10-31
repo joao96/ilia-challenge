@@ -76,7 +76,18 @@ const Aside = styled.aside`
   }
 
   @media (max-width: 720px) {
-    display: none;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+
+    strong {
+      font-size: 20px;
+    }
+
+    p {
+      display: none;
+    }
   }
 `;
 

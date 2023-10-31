@@ -6,7 +6,7 @@ import { customerSlice, initialCustomerState } from './customerSlice';
 import {
   loadCustomerFromLocalStorage,
   saveCustomerToLocalStorage,
-} from './middleware';
+} from './middlewares/customerMiddleware';
 
 const customerFromStorage = loadCustomerFromLocalStorage();
 

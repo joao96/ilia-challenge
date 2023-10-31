@@ -1,4 +1,4 @@
-import { customerSlice } from './customerSlice';
+import { customerSlice } from '../customerSlice';
 
 export const saveCustomerToLocalStorage = (store) => (next) => (action) => {
   const result = next(action);
