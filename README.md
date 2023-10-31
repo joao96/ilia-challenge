@@ -1,5 +1,5 @@
 <h4 align="center">
-  This repo provides an implementation of Full Stack Shopping applcation.
+  This repo provides an implementation of Full Stack Shopping application.
 </h4>
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/joao96/punch-timesheet?style=flat-square">
@@ -8,9 +8,11 @@
 
 <p align="center">
   <a href="#checkered_flag-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#information_source-setup-with-docker">Setup with Docker</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#information_source-setup-without-docker">Setup without Docker</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#test_tube-testing">Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-backend-setup-with-docker">Backend Setup with Docker</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-backend-setup-without-docker">Backend Setup without Docker</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#test_tube-backend-testing">Backend Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-frontend-setup">Frontend Setup</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#test_tube-frontend-testing">Frontend Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#page_facing_up-license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#get-in-touch-monocle_face">Get in touch</a>
 </p>
@@ -26,7 +28,6 @@ For the backend:
 - [Swagger](https://swagger.io/specification/)
 - [Jest](https://jestjs.io/)
 - [Docker](https://www.docker.com/)
-- [Sentry](https://sentry.io/welcome/)
 
 For the frontend:
 - [Typescript](https://www.typescriptlang.org/)
@@ -49,12 +50,7 @@ From your command line:
 
 Clone this repo & run a `cd` into the project's folder.
 
-**Step 2 (OPTIONAL):** 
-
-[Sentry](https://sentry.io/welcome/) was added to this project in order to monitor the errors launched during the execution of the application. 
-In your .env and .docker.env file, add your own DNS string to the variable SENTRY_DSN.
-
-**Step 3: Starting the backend server** 
+**Step 2: Starting the backend server** 
 
 First, inside the project root:
 
@@ -68,7 +64,7 @@ Then, run the command that will create a Docker Image of the project and start t
 $ docker-compose up
 ```
 
-**Step 4:** 
+**Step 3:** 
 
 Once you get the container running, open the project folder on a different terminal window and execute the following command in order to apply the necessary migrations:
 
@@ -101,7 +97,7 @@ $ npm run test
 
 ---------
 
-## :test_tube: Frontend Setup
+## :information_source: Frontend Setup
 
 In order to execute the test suite, run the command below:
 
