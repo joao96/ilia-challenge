@@ -99,8 +99,6 @@ $ npm run test
 
 ## :information_source: Frontend Setup
 
-In order to execute the test suite, run the command below:
-
 First, inside the project root:
 
 ```bash
