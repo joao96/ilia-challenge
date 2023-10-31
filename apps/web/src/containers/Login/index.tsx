@@ -1,10 +1,8 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { Button } from '../../components/Button';
 import {
   Content,
-  EnterButton,
   Form,
   LoginContainer,
   Separator,
@@ -13,12 +11,14 @@ import {
 import { setCustomer } from '../../redux/customerSlice';
 import { useRouter } from 'next/router';
 import { handleLogin, handleRegister } from './utils/handlers';
+import { useTheme } from 'styled-components';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [isNew, setisNew] = useState(false);
   const { push } = useRouter();
+  const theme = useTheme();
 
   const dispatch = useDispatch();
 
@@ -58,7 +58,12 @@ export const Login = () => {
                 onChange={(event) => setEmail(event.target.value)}
                 value={email}
               />
-              <EnterButton type="submit">Enter Shop</EnterButton>
+              <Button
+                style={{ background: theme.button.secondary }}
+                type="submit"
+              >
+                Enter Shop
+              </Button>
             </Form>
             <ToggleButton data-testid="toggle-button" onClick={toggleIsNew}>
               New Here?

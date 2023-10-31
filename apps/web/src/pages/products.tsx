@@ -6,9 +6,9 @@ import type { GetStaticProps } from 'next';
 import { Product } from '../shared/types';
 import { NextPageWithLayout } from '../shared/types/page';
 import Layout from '../components/Layout';
-import { CardList } from '../components/CardList';
 import { useRouter } from 'next/router';
 import { getCustomer } from '../redux/customerSlice';
+import { CardList } from '../containers/CardList';
 
 interface ProductsProps {
   productsList: Product[];

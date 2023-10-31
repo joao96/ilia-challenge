@@ -3,7 +3,7 @@ import { DefaultTheme, ThemeProvider } from 'styled-components';
 import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
 import { Product } from '../../shared/types';
-import { Card } from '../../components/CardList/components/Card';
+import { Card } from '../../components/Card';
 import { renderWithProviders } from '../../tests/store';
 
 const theme: DefaultTheme = {
