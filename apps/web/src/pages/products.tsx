@@ -1,14 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { setProducts } from '../redux/productsSlice';
+import { getProducts, setProducts } from '../redux/productsSlice';
 import type { GetStaticProps } from 'next';
 import { Product } from '../shared/types';
-import { AppState } from '../redux/store';
 import { NextPageWithLayout } from '../shared/types/page';
 import Layout from '../components/Layout';
 import { CardList } from '../components/CardList';
 import { useRouter } from 'next/router';
+import { getCustomer } from '../redux/customerSlice';
 
 interface ProductsProps {
   productsList: Product[];
@@ -25,8 +25,8 @@ export const getStaticProps = (async () => {
 const Products: NextPageWithLayout = ({ productsList }: ProductsProps) => {
   const dispatch = useDispatch();
   const { push } = useRouter();
-  const { data } = useSelector((state: AppState) => state.products);
-  const { data: customer } = useSelector((state: AppState) => state.customer);
+  const data = useSelector(getProducts);
+  const customer = useSelector(getCustomer);
 
   useEffect(() => {
     if (data.length === 0) {

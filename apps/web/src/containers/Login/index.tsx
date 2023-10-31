@@ -10,10 +10,9 @@ import {
   Separator,
   ToggleButton,
 } from './styles';
-import { customerCreate, customerFindByEmail } from '../../services/Customer';
 import { setCustomer } from '../../redux/customerSlice';
-import { useRouter } from 'next/navigation';
-import { orderFindByEmail } from '../../services/Order';
+import { useRouter } from 'next/router';
+import { handleLogin, handleRegister } from './utils/handlers';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -23,26 +22,22 @@ export const Login = () => {
 
   const dispatch = useDispatch();
 
-  async function handleLogin(e: FormEvent) {
+  async function onLogin(e: FormEvent) {
     e.preventDefault();
-    if (email.length) {
-      const customer = await customerFindByEmail({ email });
-      if (customer?.props?.name) {
-        const orders = await orderFindByEmail({ email });
-        dispatch(setCustomer({ name: customer.props.name, email, orders }));
-        push('/products');
-      }
+    const customer = await handleLogin(email);
+    if (customer) {
+      const { email: customerEmail, name, orders } = customer;
+      dispatch(setCustomer({ name, email: customerEmail, orders }));
+      push('/products');
     }
   }
 
-  async function handleRegister(e: FormEvent) {
+  async function onRegister(e: FormEvent) {
     e.preventDefault();
-    if (email.length && name.length) {
-      const response = await customerCreate({ name, email });
-      if (response?.props?.name) {
-        dispatch(setCustomer({ name, email }));
-        push('/products');
-      }
+    const customer = handleRegister(email, name);
+    if (customer) {
+      dispatch(setCustomer({ name, email }));
+      push('/products');
     }
   }
 
@@ -56,24 +51,24 @@ export const Login = () => {
         {!isNew && (
           <>
             <Separator>Sign In</Separator>
-            <Form onSubmit={handleLogin}>
+            <Form onSubmit={onLogin}>
               <input
                 type="text"
                 placeholder="Type in your e-mail"
                 onChange={(event) => setEmail(event.target.value)}
                 value={email}
               />
-              <EnterButton onClick={() => {}} className="create-room">
-                Enter Shop
-              </EnterButton>
+              <EnterButton type="submit">Enter Shop</EnterButton>
             </Form>
-            <ToggleButton onClick={toggleIsNew}>New Here?</ToggleButton>
+            <ToggleButton data-testid="toggle-button" onClick={toggleIsNew}>
+              New Here?
+            </ToggleButton>
           </>
         )}
         {isNew && (
           <>
             <Separator>New customer?</Separator>
-            <Form onSubmit={handleRegister}>
+            <Form onSubmit={onRegister}>
               <input
                 type="text"
                 placeholder="Type in your name"
@@ -88,7 +83,7 @@ export const Login = () => {
               />
               <Button type="submit">Register</Button>
             </Form>
-            <ToggleButton onClick={toggleIsNew}>
+            <ToggleButton data-testid="toggle-button" onClick={toggleIsNew}>
               Already have an account?
             </ToggleButton>
           </>

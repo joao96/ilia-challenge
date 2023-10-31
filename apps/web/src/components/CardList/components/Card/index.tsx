@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Product } from '../../../../shared/types';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { CardContainer } from './styles';
-import { addToCart } from '../../../../redux/cartSlice';
-import { AppState } from '../../../../redux/store';
+import { addToCart, getItemsInCart } from '../../../../redux/cartSlice';
 import { useEffect, useState } from 'react';
 import { formatPrice } from '../../../../utils/format';
+import { useAppDispatch, useAppSelector } from '../../../../hooks';
 
 interface CardProps {
   product: Product;
@@ -13,8 +12,8 @@ interface CardProps {
 
 export const Card = (props: CardProps) => {
   const [amountInCart, setAmountInCart] = useState(0);
-  const dispatch = useDispatch();
-  const { itemsInCart } = useSelector((state: AppState) => state.cart);
+  const dispatch = useAppDispatch();
+  const itemsInCart = useAppSelector(getItemsInCart);
 
   const { product } = props;
 

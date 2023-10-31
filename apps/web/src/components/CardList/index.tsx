@@ -1,5 +1,5 @@
 import { Product } from '../../shared/types';
-import { Card } from './components/Card/card';
+import { Card } from './components/Card';
 import { ListContainer } from './styles';
 
 interface CardList {
@@ -10,9 +10,9 @@ export const CardList = (props: CardList) => {
   const { products } = props;
 
   return (
-    <ListContainer>
+    <ListContainer data-testid="card-list-component">
       {products.map((product) => (
-        <Card key={product.id} product={product} />
+        <Card data-testid="card-component" key={product.id} product={product} />
       ))}
     </ListContainer>
   );

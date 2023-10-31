@@ -1,18 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-
 import { Cart, Container, Content, NavBarToggle, Welcome } from './styles';
 import NavbarItem from './components/NavbarItem';
 import { MdShoppingBasket } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { AppState } from '../../redux/store';
-import { emptyCart } from '../../redux/cartSlice';
-import { emptyCustomer } from '../../redux/customerSlice';
+import { emptyCart, getItemsInCart } from '../../redux/cartSlice';
+import { emptyCustomer, getCustomer } from '../../redux/customerSlice';
 import { useState } from 'react';
 
 export const Navbar = () => {
   const dispatch = useDispatch();
-  const { data } = useSelector((state: AppState) => state.customer);
-  const { itemsInCart } = useSelector((state: AppState) => state.cart);
+  const data = useSelector(getCustomer);
+  const itemsInCart = useSelector(getItemsInCart);
   const [displayMobile, setDisplayMobile] = useState(false);
 
   function shouldWelcome() {

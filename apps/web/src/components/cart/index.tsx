@@ -16,6 +16,7 @@ interface CartListProps {
   purchase: () => void;
 }
 
+// TODO: make it reusable
 export const CartList = ({
   cart,
   add,
@@ -48,7 +49,7 @@ export const CartList = ({
   }
 
   return (
-    <CartContainer>
+    <CartContainer data-testid="cart-component">
       <ProductTable>
         <thead>
           <tr>
@@ -61,7 +62,7 @@ export const CartList = ({
         </thead>
         <tbody>
           {groupedProducts.map((product) => (
-            <tr key={product.id}>
+            <tr data-testid="table-row" key={product.id}>
               <td>
                 <img src={product.image} alt={product.title} />
               </td>
@@ -71,7 +72,11 @@ export const CartList = ({
               </td>
               <td>
                 <div>
-                  <button type="button" onClick={() => remove(product.id)}>
+                  <button
+                    data-testid="remove-button"
+                    type="button"
+                    onClick={() => remove(product.id)}
+                  >
                     <MdRemoveCircleOutline size={20} color="#0054a6" />
                   </button>
                   <input
@@ -79,7 +84,11 @@ export const CartList = ({
                     readOnly
                     value={getAmountInCart(product.id)}
                   />
-                  <button type="button" onClick={() => add(product)}>
+                  <button
+                    data-testid="add-button"
+                    type="button"
+                    onClick={() => add(product)}
+                  >
                     <MdAddCircleOutline size={20} color="#0054a6" />
                   </button>
                 </div>
@@ -90,7 +99,11 @@ export const CartList = ({
                 </strong>
               </td>
               <td>
-                <button type="button" onClick={() => deleteItem(product.id)}>
+                <button
+                  data-testid="delete-button"
+                  type="button"
+                  onClick={() => deleteItem(product.id)}
+                >
                   <MdDelete size={20} color="#0054a6" />
                 </button>
               </td>
@@ -100,7 +113,7 @@ export const CartList = ({
       </ProductTable>
 
       <footer>
-        <button type="button" onClick={purchase}>
+        <button data-testid="purchase-button" type="button" onClick={purchase}>
           Purchase
         </button>
         <Total>

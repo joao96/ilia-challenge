@@ -49,7 +49,7 @@ export const OrderItem = (props: OrderItemProps) => {
         </tbody>
       </OrderTable>
       <footer>
-        <button type="button">Add to Cart</button>
+        {/* <button type="button">Add to Cart</button> */}
         <Total>
           <span>TOTAL</span>
           <strong>{formatPrice(value)}</strong>

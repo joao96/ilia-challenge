@@ -17,11 +17,13 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {
     setProducts(state, action) {
-      const withQuantity = action.payload.map((product) => ({
-        ...product,
-        quantity: Math.floor(Math.random() * 7) + 1,
-      }));
-      state.data = withQuantity;
+      if (action.payload) {
+        const withQuantity = action.payload.map((product) => ({
+          ...product,
+          quantity: Math.floor(Math.random() * 7) + 1,
+        }));
+        state.data = withQuantity;
+      }
     },
   },
 });
